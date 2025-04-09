@@ -1,3 +1,35 @@
-# SecureP-sswd
+# 🔐 Secure Note
 
-A program made to send password safely. We need a secret code to read the new password. I made this tool because we can earn a lot of time with this kind of tool. Example : I work in a company as an IT and users call me after weeks waiting for their password. They need it to work !! So with this kind of tool we can just send it quickly and safely. 
+Un outil simple, sécurisé et 100% frontend pour transmettre des **mots de passe** ou **messages sensibles** à des utilisateurs, sans risquer une interception.
+
+## 💡 Contexte
+
+En tant que technicien support, on a parfois besoin de réinitialiser un mot de passe pour un utilisateur...  
+Mais on ne peut **ni l'appeler**, **ni lui écrire directement**, ou on veut **éviter que le mot de passe circule en clair**.  
+Secure Note permet de :
+
+- Chiffrer un message avec une **clé connue uniquement de l'utilisateur** (ex : email, info perso)
+- Générer un **lien contenant le message chiffré**
+- Permettre à l'utilisateur de **le déchiffrer côté client** avec la clé
+
+## 🔧 Stack
+- HTML + CSS (dark mode)
+- JavaScript avec [CryptoJS](https://github.com/brix/crypto-js)
+- Aucune base de données, aucune trace serveur
+- GitHub Pages pour l’hébergement
+
+## 🚀 Démo
+👉 [Voir la version en ligne](https://tonpseudo.github.io/secure-note/)
+
+## 🛠️ Utilisation
+
+1. Va sur la page de chiffrement
+2. Écris ton message
+3. Entres une clé secrète (connue uniquement par l'utilisateur)
+4. Génère le lien → copie-le
+5. L'utilisateur utilise la clé pour lire le message sur la page de déchiffrement
+
+---
+
+> Projet réalisé dans un but de démonstration lors d’un entretien IT / cybersécurité.  
+> 🔒 Secure by design – No backend, no bullshit.
