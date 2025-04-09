@@ -86,7 +86,7 @@
 
       const encrypted = CryptoJS.AES.encrypt(message, key).toString();
       const encoded = encodeURIComponent(encrypted);
-      const url = `tamstile.github.io#${encoded}`;
+      const url = `https://tamstile.github.io#${encoded}`;
       document.getElementById('link').innerHTML = `🔗 <strong>Lien à transmettre :</strong><br><a href="${url}" target="_blank">${url}</a>`;
     }
   </script>
