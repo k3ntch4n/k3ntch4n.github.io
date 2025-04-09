@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <title>🔐 Secure Note - Chiffrement</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="index_files/crypto-js.js"></script>
+  <style>
+    body {
+      background-color: #121212;
+      color: #f0f0f0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2em;
+    }
+
+    h2 {
+      color: #00bcd4;
+    }
+
+    textarea, input, button {
+      border-radius: 8px;
+      border: none;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 1em;
+      width: 100%;
+      max-width: 500px;
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      background-color: #00bcd4;
+      color: #121212;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0097a7;
+    }
+
+    #link a {
+      color: #4caf50;
+      word-break: break-all;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .note {
+      font-size: 0.9em;
+      color: #999;
+    }
+  </style>
+<style>:is([id*='google_ads_iframe'],[id*='taboola-'],.taboolaHeight,.taboola-placeholder,#top-ad,#credential_picker_container,#credentials-picker-container,#credential_picker_iframe,[id*='google-one-tap-iframe'],#google-one-tap-popup-container,.google-one-tap__module,.google-one-tap-modal-div,#amp_floatingAdDiv,#ez-content-blocker-container) {display:none!important;min-height:0!important;height:0!important;}</style></head>
+<body>
+  <div class="container">
+    <h2>🔐 Générer un message sécurisé</h2>
+    <textarea id="message" rows="5" placeholder="Tape ici le mot de passe ou message à transmettre..."></textarea>
+    <input type="password" id="key" placeholder="Mot-clé secret connu de l’utilisateur (ex: date de naissance)">
+    <button onclick="encrypt()">Chiffrer &amp; Générer le lien</button>
+    <p class="note">💡 Partage uniquement le lien. L’utilisateur doit connaître la clé pour lire le message.</p>
+    <p id="link"></p>
+  </div>
+
+  <script>
+    function encrypt() {
+      const message = document.getElementById('message').value;
+      const key = document.getElementById('key').value;
+
+      if (!message || !key) {
+        alert("Remplis les deux champs.");
+        return;
+      }
+
+      const encrypted = CryptoJS.AES.encrypt(message, key).toString();
+      const encoded = encodeURIComponent(encrypted);
+      const url = `read.html#${encoded}`;
+      document.getElementById('link').innerHTML = `🔗 <strong>Lien à transmettre :</strong><br><a href="${url}" target="_blank">${url}</a>`;
+    }
+  </script>
+
+
+</body></html>
