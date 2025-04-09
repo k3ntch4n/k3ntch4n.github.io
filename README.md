@@ -5,7 +5,7 @@ Un outil simple, sécurisé et 100% frontend pour transmettre des **mots de pass
 ## 💡 Contexte
 
 En tant que technicien support, on a parfois besoin de réinitialiser un mot de passe pour un utilisateur...  
-Mais on ne peut **ni l'appeler**, **ni lui écrire directement**, ou on veut **éviter que le mot de passe circule en clair**.  
+Mais la personne ne répond pas par télephone ou a des horaires décalés, et on veut **éviter que le mot de passe circule en clair**.  
 Secure Note permet de :
 
 - Chiffrer un message avec une **clé connue uniquement de l'utilisateur** (ex : email, info perso)
