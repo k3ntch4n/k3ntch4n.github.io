@@ -29,7 +29,4 @@ Secure Note permet de :
 4. Génère le lien → copie-le
 5. L'utilisateur utilise la clé pour lire le message sur la page de déchiffrement
 
----
 
-> Projet réalisé dans un but de démonstration lors d’un entretien IT / cybersécurité.  
-> 🔒 Secure by design – No backend, no bullshit.
