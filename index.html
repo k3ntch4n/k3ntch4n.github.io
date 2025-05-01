@@ -84,7 +84,10 @@
         return;
       }
 
-      const encrypted = CryptoJS.AES.encrypt(message, key).toString();
+      const expiration = Date.now() + 3600 * 1000; // expire dans 1h
+      const payload = JSON.stringify({ exp: expiration, msg: message });
+      const encrypted = CryptoJS.AES.encrypt(payload, key).toString();
+
       const encoded = encodeURIComponent(encrypted);
       const url = `read.html#${encoded}`;
       document.getElementById('link').innerHTML = `🔗 <strong>Lien à transmettre :</strong><br><a href="${url}" target="_blank">${url}</a>`;
