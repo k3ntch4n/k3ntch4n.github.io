@@ -73,15 +73,29 @@
 
     function decrypt() {
       const key = document.getElementById('key').value;
+      
       try {
-        const decrypted = CryptoJS.AES.decrypt(decodeURIComponent(hash), key);
-        const plaintext = decrypted.toString(CryptoJS.enc.Utf8);
-        if (!plaintext) throw new Error("Wrong key?");
-        document.getElementById('output').innerText = plaintext;
+        // 1. Décrypter d'abord
+        const decryptedBytes = CryptoJS.AES.decrypt(decodeURIComponent(hash), key);
+        const plaintext = decryptedBytes.toString(CryptoJS.enc.Utf8);
+        
+        // 2. Vérifier si le texte décrypté contient une expiration
+        const data = JSON.parse(plaintext); // Attention : nécessite que le message encrypté soit au format JSON
+        
+        // 3. Vérifier la date d'expiration
+        if (Date.now() > data.exp) {
+          alert("Ce lien a expiré.");
+          return;
+        }
+        
+        // 4. Afficher le message valide
+        document.getElementById('output').innerText = data.msg;
+        
       } catch (e) {
-        document.getElementById('output').innerText = "❌ Mot de passe incorrect ou message corrompu.";
+        document.getElementById('output').innerText = "❌ Lien expiré, clé incorrecte ou message corrompu.";
       }
     }
+
   </script>
 
 
