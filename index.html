@@ -84,7 +84,7 @@
         return;
       }
 
-      const expiration = Date.now() + 3600 * 1000; // expire dans 1h
+      const expiration = Date.now() + 24 * 3600 * 1000; // expire dans 1h
       const payload = JSON.stringify({ exp: expiration, msg: message });
       const encrypted = CryptoJS.AES.encrypt(payload, key).toString();
 
